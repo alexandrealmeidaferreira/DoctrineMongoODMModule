@@ -74,6 +74,7 @@ class ConnectionFactory extends AbstractFactory
         $driverOptions = [];
         if(isset($options->getOptions()['driver_options'])){
             $driverOptions = $options->getOptions()['driver_options'];
+            unset($options->getOptions()['driver_options']);
         }
         return new Connection($connectionString, $options->getOptions(), $configuration, $eventManager, $driverOptions);
     }
