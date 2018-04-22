@@ -70,7 +70,12 @@ class ConnectionFactory extends AbstractFactory
         /** @var $configuration \Doctrine\Common\EventManager */
         $eventManager = $container->get('doctrine.eventmanager.' . $this->getName());
 
-        return new Connection($connectionString, $options->getOptions(), $configuration, $eventManager);
+        /** add driverOptions driver_options */
+        $driverOptions = [];
+        if(isset($options->getOptions()['driver_options'])){
+            $driverOptions = $options->getOptions()['driver_options'];
+        }
+        return new Connection($connectionString, $options->getOptions(), $configuration, $eventManager, $driverOptions);
     }
 
     public function createService(ServiceLocatorInterface $container)
