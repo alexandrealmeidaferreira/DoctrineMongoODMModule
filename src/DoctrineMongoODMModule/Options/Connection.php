@@ -63,6 +63,8 @@ class Connection extends AbstractOptions
      */
     protected $options = [];
 
+    protected $driverOptions = [];
+
     /**
      *
      * @return string
@@ -207,6 +209,17 @@ class Connection extends AbstractOptions
     public function setOptions($options)
     {
         $this->options = $options;
+        return $this;
+    }
+
+    public function getDriverOptions()
+    {
+        return $this->driverOptions;
+    }
+
+    public function setDriverOptions($driverOptions = array())
+    {
+        $this->driverOptions = $driverOptions;
         return $this;
     }
 }
